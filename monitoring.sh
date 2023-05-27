@@ -27,12 +27,14 @@ core_use=$(top -n 1 -b | grep "%Cpu" | awk '{print $2+$4}')
 last_reboot_date=$(who -b | awk '{print $3}')
 last_reboot_hour=$(who -b | awk '{print $4}')
 
-# LVM IS ACTIVE OR NOT
-lvm=$()
+# IS LOGICAL VOLUME MANAGER (LVM) ACTIVE OR NOT?
+lvm_use=$(lsblk --noheadings --output TYPE | grep -q lvm && echo "Yes" || echo "No")
 
 # NUMBER OF ACTIVES CONNECTIONS (TCP)
+tcp=$(grep 'TCP' /proc/net/sockstat | awk '{print($3)}')
 
 # NUMBER OF USERS LOGGED IN TO THE SERVER
+users=$(users | wc -w)
 
 # SERVER IPv4 ADRESS AND MAC
 
@@ -50,16 +52,16 @@ wall "	¡Hola, amigos del Youtube! (...)
 		- Architecture:				$arch
 		- Kernel:					$kernel
 		- Physical cores:			$cores
-		- Virtual cores:			$v_cores
+		- Virtual cores:i			$v_cores
 		- Currently available RAM:	$ca_ram / $total_ram
 		- RAM percentaje in use:	$piu_ram%
 		- Available disk storage:	$ca_disk / $total_disk
 		- Disk storage used:		$piu_disk
 		- Current cores use:		$core_use%
 		- Last reboot:				$last_reboot_date $last_reboot_hour
-		- LMV use:					$lmv
-		- Connexions TCP:
-		- User log:					$user_log
+		- LMV use:					$lvm_use
+		- Connexions TCP:			$tcp
+		- User log:					$users
 		- Network:					$network
 		- Sudo:						$sudo
 		"
