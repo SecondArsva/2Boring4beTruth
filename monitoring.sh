@@ -22,9 +22,13 @@ piu_disk=$(df -h --total | grep "total" | awk '{print $5}')
 
 # CURRENT PERCENTAJE OF USE OF THE CORES PER CATEGORY
 core_use=$(top -n 1 -b | grep "%Cpu" | awk '{print $2+$4}')
+
 # DATE AND TIME OF THE LAST REBOOT
+last_reboot_date=$(who -b | awk '{print $3}')
+last_reboot_hour=$(who -b | awk '{print $4}')
 
 # LVM IS ACTIVE OR NOT
+lvm=$()
 
 # NUMBER OF ACTIVES CONNECTIONS (TCP)
 
@@ -45,11 +49,17 @@ wall "	¡Hola, amigos del Youtube! (...)
 
 		- Architecture:				$arch
 		- Kernel:					$kernel
-		- Phisical cores:			$cores
+		- Physical cores:			$cores
 		- Virtual cores:			$v_cores
 		- Currently available RAM:	$ca_ram / $total_ram
 		- RAM percentaje in use:	$piu_ram%
-		- Available storage:		$ca_disk / $total_disk
-		- Storage used:				$piu_disk
+		- Available disk storage:	$ca_disk / $total_disk
+		- Disk storage used:		$piu_disk
 		- Current cores use:		$core_use%
+		- Last reboot:				$last_reboot_date $last_reboot_hour
+		- LMV use:					$lmv
+		- Connexions TCP:
+		- User log:					$user_log
+		- Network:					$network
+		- Sudo:						$sudo
 		"
