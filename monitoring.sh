@@ -37,8 +37,11 @@ tcp=$(grep 'TCP' /proc/net/sockstat | awk '{print($3)}')
 users=$(users | wc -w)
 
 # SERVER IPv4 ADRESS AND MAC
+ipv4=$(hostname -I | awk '{print $1}')
+mac=$()
 
 # NUMBER OF COMMANDS EXECUTED WITH SUDO
+sudo_log=$()
 
 # --- WRITE ALL COMMAND ---
 wall "	¡Hola, amigos del Youtube! (...)
@@ -62,6 +65,7 @@ wall "	¡Hola, amigos del Youtube! (...)
 		- LMV use:					$lvm_use
 		- Connexions TCP:			$tcp
 		- User log:					$users
-		- Network:					$network
-		- Sudo:						$sudo
+		- IPv4:					$ipv4
+		- MAC:					$mac
+		- Sudo:						$sudo_log
 		"
