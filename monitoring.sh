@@ -48,7 +48,7 @@ wall "	¡Hola, amigos del Youtube! (...)
 
 	I mean... HELLO, AMIGOS DEL DEBIAN!!!
 
-	This is a message from your favorite superuser R41Z. I'm not G-R00T!
+	This is a message from your favorite superuser R41Z (I'm not G-R00T!),
 	with some funzy info about the server. I hope you enjoy it.
 	If not... I don't care! You will see it again in 10 minutes.
 
