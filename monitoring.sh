@@ -41,14 +41,14 @@ ipv4=$(ip -4 address show enp0s3 | grep "inet" | awk '{print $2}' | cut -d "/" -
 mac=$(ip a | grep "link/ether" | awk '{print $2}')
 
 # NUMBER OF COMMANDS EXECUTED WITH SUDO
-sudo_log=$()
+sudo_log=$(grep 'COMMAND' /var/log/sudo/sudo_config | wc -l)
 
 # --- WRITE ALL COMMAND ---
 wall "	¡Hola, amigos del Youtube! (...)
 
 	I mean... HELLO, AMIGOS DEL DEBIAN!!!
 
-	This is a message from your favorite superuser 'r41z-r00t'
+	This is a message from your favorite superuser R41Z. I'm not G-R00T!
 	with some funzy info about the server. I hope you enjoy it.
 	If not... I don't care! You will see it again in 10 minutes.
 
